@@ -1,0 +1,16 @@
+<div>
+    <h3 >Модули</h3>
+    <div class="list-group">
+        <ul id='modules'>
+            {% for module in modules %}
+                <li>
+                    <a href="{% url 'module-detail' module_id=module.id %}" class="list-group-item list-group-item action {% if request.path == '/module-detail/module.id' %}active{% endif %}">
+                        <span>Модуль {{module.order|add:1}}</span>
+                        <br>
+                        <p>{{module.name}}</p>
+                    </a>                          
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

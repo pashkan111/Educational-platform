@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="row ">
+<form method="POST">
+    <h2>Вы уверены,что хотите удалить {{object}}?</h2>
+    {% csrf_token %}
+    <input type="submit" value="Удалить" class="btn btn-danger" name="delete" >
+
+</form>
+</div>
+
+{% endblock %}

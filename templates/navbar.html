@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+    <div class="container">
+      <a class="navbar-brand" href="{% url 'home' %}">Главная</a>
+        <ul class="navbar-nav ml-auto">
+          <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                  <a class="nav-link text-light dropdown-toggle" href="#" role="button" id="navbardropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Категории
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbardropdownMenuLink">
+                  </div>
+                </li>
+          </ul>
+          {% if not request.user.is_authenticated %}
+              <li>
+                <a class="nav-link text-light" href="{% url 'login' %}">Авторизация</a>
+              </li>
+              <li>
+                <a class="nav-link text-light" href="{% url 'register' %}">Регистрация</a>
+              </li>
+          {% endif %}
+          {% if request.user.is_authenticated %}
+              
+              <li>
+                <div class="nav-link text-light">Здравствуйте, <a href="" style="text-decoration: none; color: ivory;">{{request.user.username}}</a></div>
+              </li>
+              <li>
+                <a class="nav-link text-light" href="{% url 'logout' %}">Выйти</a>
+              </li>
+          {% endif %}
+
+          <li class="nav-item">
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>

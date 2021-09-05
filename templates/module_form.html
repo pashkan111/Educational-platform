@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if object %}
+<h2>{{object}}</h2>
+    <h3>Редактировать контент {{object.title}}</h3>
+{% else %}
+    <h3>Сoздать новый контент</h3>
+{% endif %}
+
+<div>
+    <form action="" method="post" enctype="multipart/form-data">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <p><input type="submit" value="Save content"></p>
+    </form>
+</div>
+   {% endblock %}
+

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                {% include "nav_module.html" %}
+            </div>
+            <div class="col-md-8">
+                {% block module_content %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

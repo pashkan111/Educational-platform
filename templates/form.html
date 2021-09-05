@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+{% if obj %}
+    <h2>Редактировать курс {{obj.name}}</h2>
+{% else %}
+    <h2>Создать курс</h2>
+{% endif %}
+
+<form method="POST">
+    {% csrf_token %}
+    <!-- {{ form|crispy }} -->
+    {{form.subject}}
+    {{form.name}}
+    <input type="submit" value="Сохранить" class="btn btn-success" >
+
+</form>
+
+{% endblock %}

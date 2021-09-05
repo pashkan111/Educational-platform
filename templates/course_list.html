@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row ">
+    <h1 class="text-center">Мои курсы</h1>
+    <div class="col-md-10">
+        {% if not courses %}
+        <div>
+            У вас нет активных курсов
+        </div>
+        {% endif %}
+        {% for course in courses %}
+            <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                <strong><a href="{% url 'course-detail' course_id=course.id %}">{{course.name}}</a></strong>
+                <div class="col-md-4">
+                    <span class="badge bg-primary text-dark rounded-pill"><a class="link-dark" href="{% url 'update' pk=course.id %}">Редактировать</a></span>
+                    <span class="badge bg-primary text-dark rounded-pill"><a class="link-dark" href="{% url 'create-module' id=course.id %}">Добавить модуль</a></span>
+                    <span class="badge bg-danger text-dark rounded-pill"><a class="link-dark" href="{% url 'delete' pk=course.id %}">Удалить</a></span>
+                </div>
+                </li>
+            </ul>
+        
+        {% endfor %}
+        <div class="col-md-2 offset-10">
+            <span class="btn btn-success btn-md rounded-pill"><a class="link-dark" href="{% url 'create' %}">Создать новый курс</a></span>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
